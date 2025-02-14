@@ -7,4 +7,26 @@ const SIGN_IN = gql`
   }
 `;
 
-export { SIGN_IN };
+const SIGN_UP = gql`
+  mutation Signup(
+    $firstName: String!
+    $lastName: String!
+    $address: String
+    $email: String!
+    $phone: String
+    $password: String!
+  ) {
+    signup(
+      firstName: $firstName
+      lastName: $lastName
+      address: $address
+      email: $email
+      phone: $phone
+      password: $password
+    ) {
+      token
+    }
+  }
+`;
+
+export { SIGN_IN, SIGN_UP };
