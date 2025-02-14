@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 
-import "../styles/signUp.css";
+import "../styles/SignUp.css";
 import { Link } from "react-router";
 import { SIGN_UP } from "../graphQl/mutations";
 import { useMutation } from "@apollo/client";

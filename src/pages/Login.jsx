@@ -1,5 +1,5 @@
-import { Link } from "react-router-dom";
-import "../styles/login.css";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import "../styles/Login.css";
 import { useForm } from "react-hook-form";
 import { useMutation } from "@apollo/client";
 import { SIGN_IN } from "../graphQl/mutations";
@@ -9,7 +9,9 @@ function Login() {
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const [login, { data, loading, error }] = useMutation(SIGN_IN);
+  const [login, { loading }] = useMutation(SIGN_IN);
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const handleLogin = async ({ email, password }) => {
     try {
@@ -19,6 +21,7 @@ function Login() {
       if (response.data?.login?.token) {
         localStorage.setItem("token", response.data.login.token);
       }
+      navigate("/", { replace: true, state: { from: location } });
     } catch (err) {
       console.error("Login failed", err);
     }

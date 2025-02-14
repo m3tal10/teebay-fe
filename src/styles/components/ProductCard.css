@@ -1,0 +1,75 @@
+.product-card {
+  width: 80vw;
+  border: 2px solid black;
+  margin-top: 5vh;
+  padding: 3vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 30vh;
+  font-family: "Dosis", serif;
+}
+
+.product-card-title {
+  font-size: 4vh;
+  padding-bottom: 2vh;
+}
+
+.product-card-subdata {
+  font-size: 2.4vh;
+  color: rgb(104, 104, 104);
+  font-weight: 700;
+
+  gap: 0;
+  padding: 0px;
+}
+
+.product-categories {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 0px;
+  padding: 0px;
+}
+
+.product-card-description {
+  font-size: 2.4vh;
+  color: rgb(39, 38, 38);
+  font-weight: 600;
+
+  gap: 0;
+  padding: 10px 0;
+}
+
+.product-card-date {
+  font-size: 1.8vh;
+  color: rgb(104, 104, 104);
+  font-weight: 700;
+
+  gap: 0;
+  padding: 0px;
+}
+
+.side-items {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  flex-direction: column;
+  height: 100%;
+
+  font-size: 2.4vh;
+  color: rgb(104, 104, 104);
+  font-weight: 600;
+}
+
+.trash-svg {
+  width: 30px;
+  height: 30px;
+}
+
+@media only screen and (max-width: 600px) {
+  .trash-svg {
+    width: 20px;
+    height: 15px;
+  }
+}

@@ -1,0 +1,27 @@
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #f8f8f8; /* Light background */
+  border-bottom: 1px solid #ccc; /* Optional border */
+}
+
+.nav-links {
+  display: flex;
+  justify-content: center;
+  flex-grow: 1; /* Ensures center alignment */
+  gap: 20px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+}
+
+.active-link {
+  font-weight: bold;
+  color: blue; /* Change color when active */
+  border-bottom: 2px solid blue;
+}
