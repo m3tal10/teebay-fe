@@ -1,0 +1,82 @@
+body {
+  background-color: #ffffff;
+  font-family: "Inter", serif;
+}
+
+.signin-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 98vh;
+  background-color: #ffffff;
+  flex-direction: column;
+}
+
+.signin-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 50px 80px;
+
+  border: 3px solid rgba(141, 130, 130, 0.288);
+  text-align: center;
+
+  width: 20vw;
+  height: 40vh;
+}
+
+h2 {
+  margin-bottom: 20px;
+  font: bold;
+  font-size: 5vh;
+  font-weight: 400;
+  color: rgb(48, 47, 47);
+}
+
+.login-input-field {
+  width: 90%;
+  padding: 16px 12px;
+  margin: 15px auto;
+  border: 3px solid rgba(145, 133, 133, 0.288);
+  border-radius: 4px;
+  background-color: white;
+  font: bold;
+  color: rgb(48, 47, 47);
+  font-size: 2vh;
+}
+
+input::placeholder {
+  color: rgba(145, 133, 133, 0.288);
+  font: bold;
+  font-weight: 700;
+  font-size: 2vh;
+}
+
+.login-button {
+  background-color: #6c5ce7;
+  color: white;
+  border: none;
+  padding: 15px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  width: 5vw;
+  text-align: center;
+  margin: auto;
+  font-weight: 600;
+}
+
+.link {
+  color: #6c5ce7;
+  text-decoration: none;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+.p {
+  font-size: 1.8vh;
+  font-weight: 600;
+  color: rgb(48, 47, 47);
+}
