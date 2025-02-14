@@ -53,6 +53,10 @@ input::placeholder {
   font-size: 2vh;
 }
 
+.error-text {
+  color: red;
+}
+
 .login-button {
   background-color: #6c5ce7;
   color: white;
