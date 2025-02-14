@@ -29,4 +29,33 @@ const SIGN_UP = gql`
   }
 `;
 
-export { SIGN_IN, SIGN_UP };
+const CREATE_PRODUCT = gql`
+  mutation CreateProduct(
+    $title: String!
+    $categories: [ProductCategory!]!
+    $description: String!
+    $buyPrice: Float!
+    $rentPrice: Float!
+    $rentOption: RentOption!
+  ) {
+    createProduct(
+      title: $title
+      categories: $categories
+      description: $description
+      buyPrice: $buyPrice
+      rentPrice: $rentPrice
+      rentOption: $rentOption
+    ) {
+      id
+      title
+      categories
+      description
+      buyPrice
+      rentPrice
+      rentOption
+      createdAt
+    }
+  }
+`;
+
+export { SIGN_IN, SIGN_UP, CREATE_PRODUCT };

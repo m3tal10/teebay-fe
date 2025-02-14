@@ -2,6 +2,9 @@ import { useState } from "react";
 import { useForm, Controller } from "react-hook-form";
 import Select from "react-select";
 import "../styles/addProduct.css";
+import { CREATE_PRODUCT } from "../graphQl/mutations";
+import { useMutation } from "@apollo/client";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const PRODUCT_CATEGORIES = [
   { value: "ELECTRONICS", label: "Electronics" },
@@ -37,17 +40,31 @@ export default function CreateProduct() {
       rentOption: "",
     },
   });
+  const [createProduct, { loading }] = useMutation(CREATE_PRODUCT);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const formValues = watch();
 
-  const onSubmit = (data) => {
-    // Transform categories array to match your backend expectations
+  const onSubmit = async (data) => {
+    console.log(data.rentOption.value);
+    // Transform categories array to match backend expectation
     const transformedData = {
       ...data,
       categories: data.categories.map((cat) => cat.value),
+      rentOption: data.rentOption.value,
+      buyPrice: parseFloat(data.buyPrice),
+      rentPrice: parseFloat(data.rentPrice),
     };
-    console.log("Form submitted:", transformedData);
-    // Handle form submission here
+    try {
+      console.warn({ ...transformedData });
+      const response = await createProduct({
+        variables: { ...transformedData },
+      });
+      navigate("/", { replace: true, state: { from: location } });
+    } catch (err) {
+      console.error("Product creation failed.", err);
+    }
   };
 
   const nextStep = () => {
@@ -154,7 +171,7 @@ export default function CreateProduct() {
               placeholder="Enter price"
             />
             <Controller
-              name="options"
+              name="rentOption"
               control={control}
               rules={{ required: "Please select at least one category" }}
               render={({ field }) => (
@@ -192,7 +209,8 @@ export default function CreateProduct() {
               <span>Price:</span>
               <p>${formValues.price}</p>,{" "}
               <span>
-                To rent:${formValues.rentPrice} per {formValues.rentOption}
+                To rent:${formValues.rentPrice} per{" "}
+                {formValues.rentOption?.value}
               </span>
             </div>
           </div>
