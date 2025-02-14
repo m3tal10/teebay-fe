@@ -1,13 +1,13 @@
 .product-card {
-  width: 80vw;
-  border: 2px solid black;
+  width: 70vw;
+  border: 2px solid rgb(201, 201, 201);
   margin-top: 5vh;
   padding: 3vh;
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: 30vh;
-  font-family: "Dosis", serif;
+  font-family: "Inter", serif;
 }
 
 .product-card-title {
@@ -34,7 +34,7 @@
 
 .product-card-description {
   font-size: 2.4vh;
-  color: rgb(39, 38, 38);
+  color: rgb(104, 104, 104);
   font-weight: 600;
 
   gap: 0;

@@ -1,12 +1,12 @@
 import "../styles/Home.css";
 import { Link } from "react-router-dom"; // Fix import (was `react-router`)
 import { useQuery } from "@apollo/client";
-import { GET_ALL_PRODUCTS } from "../graphQl/queries";
+import { GET_ALL_PRODUCTS, GET_MY_PRODUCTS } from "../graphQl/queries";
 import MyProductsCard from "../components/ProductCard";
 import Button from "../components/Button";
 
-function Home() {
-  const { loading, error, data } = useQuery(GET_ALL_PRODUCTS);
+function MyProduct() {
+  const { loading, error, data } = useQuery(GET_MY_PRODUCTS);
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error fetching products</p>;
@@ -16,8 +16,8 @@ function Home() {
       <div className="products-title">All Products</div>
 
       <div className="products-container">
-        {data.products.length ? (
-          data.products.map((product) => (
+        {data.myProducts.length ? (
+          data.myProducts.map((product) => (
             <MyProductsCard key={product.id} data={product} />
           ))
         ) : (
@@ -38,4 +38,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default MyProduct;

@@ -3,14 +3,14 @@ nav {
   justify-content: space-between;
   align-items: center;
   padding: 10px 20px;
-  background-color: #f8f8f8; /* Light background */
-  border-bottom: 1px solid #ccc; /* Optional border */
+  background-color: white;
+  border-bottom: 1px solid #ccc;
 }
 
 .nav-links {
   display: flex;
   justify-content: center;
-  flex-grow: 1; /* Ensures center alignment */
+  flex-grow: 1;
   gap: 20px;
 }
 
@@ -22,6 +22,6 @@ nav {
 
 .active-link {
   font-weight: bold;
-  color: blue; /* Change color when active */
+  color: blue;
   border-bottom: 2px solid blue;
 }

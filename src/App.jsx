@@ -14,7 +14,9 @@ function App() {
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           {protectedRoutes.map((route, index) => {
-            <Route key={index} path={route.path} element={route.element} />;
+            return (
+              <Route key={index} path={route.path} element={route.element} />
+            );
           })}
         </Route>
       </Route>

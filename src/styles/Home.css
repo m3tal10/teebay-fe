@@ -1,5 +1,7 @@
 body {
-  font-family: "Dosis", serif;
+  font-family: "Inter", serif;
+  margin: 0;
+  padding: 0;
 }
 
 .Navbar {
@@ -23,14 +25,41 @@ body {
 
 .products-title {
   font-size: 5vh;
+  text-align: center;
 }
 
 .my-products {
   margin-top: 5vh;
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
+  align-items: center;
+  height: 70vh;
+}
+
+.products-container {
+  width: 80vw;
+  max-width: 1000px;
+  height: 60vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.no-products {
+  text-align: center;
+  font-size: 2vh;
+  font-weight: bold;
+  color: gray;
+  width: 100%;
+  padding: 20px;
+}
+
+.addbutton-section {
+  position: fixed;
+  bottom: 20px;
+  right: 5vw;
 }
 
 .addproduct-button {
@@ -41,13 +70,4 @@ body {
   font-size: 2vh;
   border: none;
   font-weight: 700;
-}
-
-.addbutton-section {
-  margin: 10px auto;
-  display: flex;
-  justify-content: end;
-  align-items: end;
-  width: 80vw;
-  text-align: end;
 }
