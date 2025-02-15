@@ -4,10 +4,11 @@ import { useQuery } from "@apollo/client";
 import { GET_MY_PRODUCTS } from "../graphQl/queries";
 import MyProductsCard from "../components/ProductCard";
 import Button from "../components/Button";
+import LoadingSpinner from "../components/LoadingSpinner";
 function MyProduct() {
   const { loading, error, data } = useQuery(GET_MY_PRODUCTS);
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <LoadingSpinner fullPage />;
   if (error) return <p>Error fetching products</p>;
 
   return (

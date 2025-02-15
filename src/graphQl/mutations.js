@@ -87,10 +87,36 @@ const UPDATE_PRODUCT = gql`
   }
 `;
 
+const RENT_PRODUCT = gql`
+  mutation RentProduct($id: ID!, $startTime: String!, $endTime: String!) {
+    rentProduct(id: $id, startTime: $startTime, endTime: $endTime) {
+      id
+      title
+    }
+  }
+`;
+
+const BUY_PRODUCT = gql`
+  mutation BuyProduct($id: ID!) {
+    buyProduct(id: $id) {
+      id
+      title
+    }
+  }
+`;
+
 const DELETE_PRODUCT = gql`
   mutation DeleteProduct($id: ID!) {
     deleteProduct(id: $id)
   }
 `;
 
-export { SIGN_IN, SIGN_UP, CREATE_PRODUCT, UPDATE_PRODUCT, DELETE_PRODUCT };
+export {
+  SIGN_IN,
+  SIGN_UP,
+  CREATE_PRODUCT,
+  UPDATE_PRODUCT,
+  DELETE_PRODUCT,
+  RENT_PRODUCT,
+  BUY_PRODUCT,
+};

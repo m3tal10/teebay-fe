@@ -7,6 +7,7 @@ import { GET_PRODUCT } from "../graphQl/queries";
 // import { UPDATE_PRODUCT } from "../graphQl/mutations";
 import "../styles/EditProduct.css";
 import { UPDATE_PRODUCT } from "../graphQl/mutations";
+import LoadingSpinner from "../components/LoadingSpinner";
 
 const PRODUCT_CATEGORIES = [
   { value: "ELECTRONICS", label: "Electronics" },
@@ -87,7 +88,7 @@ export default function EditProduct() {
     }
   };
 
-  if (loading) return <p>Loading product details...</p>;
+  if (loading) return <LoadingSpinner fullPage />;
 
   return (
     <div className="edit-product">
