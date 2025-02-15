@@ -17,7 +17,7 @@ const modalStyle = {
   p: 4,
 };
 
-function MyProductsCard({ data }) {
+function MyProductsCard({ data, home }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [deleteProduct, { loading, error }] = useMutation(DELETE_PRODUCT, {
     update(cache, { data: { deleteProduct } }, { variables }) {
@@ -67,17 +67,19 @@ function MyProductsCard({ data }) {
     <div className="product-card">
       <div className="product-header">
         <h2 className="product-title">{data.title}</h2>
-        <IconButton
-          className="trash-icon"
-          sx={{ fontSize: "2rem", padding: "1rem" }}
-          onClick={(e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            handleOpen();
-          }}
-        >
-          <DeleteIcon sx={{ color: "grey", fontSize: "2.5rem" }} />{" "}
-        </IconButton>
+        {!home && (
+          <IconButton
+            className="trash-icon"
+            sx={{ fontSize: "2rem", padding: "1rem" }}
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              handleOpen();
+            }}
+          >
+            <DeleteIcon sx={{ color: "grey", fontSize: "2.5rem" }} />{" "}
+          </IconButton>
+        )}
       </div>
 
       <div className="product-categories">

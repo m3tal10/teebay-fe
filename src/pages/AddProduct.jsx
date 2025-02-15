@@ -5,6 +5,7 @@ import "../styles/addProduct.css";
 import { CREATE_PRODUCT } from "../graphQl/mutations";
 import { useMutation } from "@apollo/client";
 import { useLocation, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const PRODUCT_CATEGORIES = [
   { value: "ELECTRONICS", label: "Electronics" },
@@ -72,8 +73,9 @@ export default function CreateProduct() {
         variables: { ...transformedData },
       });
       navigate("/", { replace: true, state: { from: location } });
+      toast.success("Product added successfully.");
     } catch (err) {
-      console.error("Product creation failed.", err);
+      toast.error("Failed to add product.");
     }
   };
 

@@ -3,6 +3,7 @@ import "../styles/Login.css";
 import { useForm } from "react-hook-form";
 import { useMutation } from "@apollo/client";
 import { SIGN_IN } from "../graphQl/mutations";
+import { toast } from "react-toastify";
 function Login() {
   const {
     register,
@@ -22,8 +23,9 @@ function Login() {
         localStorage.setItem("token", response.data.login.token);
       }
       navigate("/", { replace: true, state: { from: location } });
+      toast.success("Logged in successfully.");
     } catch (err) {
-      console.error("Login failed", err);
+      toast.error("Email or password incorrect.");
     }
   };
 

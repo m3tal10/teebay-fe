@@ -4,6 +4,7 @@ import "../styles/SignUp.css";
 import { Link } from "react-router";
 import { SIGN_UP } from "../graphQl/mutations";
 import { useMutation } from "@apollo/client";
+import { toast } from "react-toastify";
 
 const SignUp = () => {
   const {
@@ -29,9 +30,9 @@ const SignUp = () => {
       if (response.data?.signup?.token) {
         localStorage.setItem("token", response.data.signup.token);
       }
-      console.warn(response.data?.signup?.token);
+      toast.success("Signed up successfully.");
     } catch (err) {
-      console.error("Sign up failed", err);
+      toast.error("Signup failed.");
     }
   };
 

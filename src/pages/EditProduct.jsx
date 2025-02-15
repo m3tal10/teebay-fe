@@ -8,6 +8,7 @@ import { GET_PRODUCT } from "../graphQl/queries";
 import "../styles/EditProduct.css";
 import { UPDATE_PRODUCT } from "../graphQl/mutations";
 import LoadingSpinner from "../components/LoadingSpinner";
+import { toast } from "react-toastify";
 
 const PRODUCT_CATEGORIES = [
   { value: "ELECTRONICS", label: "Electronics" },
@@ -84,7 +85,8 @@ export default function EditProduct() {
 
       navigate("/", { replace: true });
     } catch (err) {
-      console.error("Product update failed.", err);
+      console.error("Product update failed:", err);
+      toast.error(err.message);
     }
   };
 

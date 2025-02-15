@@ -23,6 +23,26 @@ export const protectedRoutes = [
     element: <ProductDetails />,
   },
 ];
+
+export const dashBoardRoutes = [
+  {
+    path: "bought",
+    element: <Login />,
+  },
+  {
+    path: "sold",
+    element: <Login />,
+  },
+  {
+    path: "borrowed",
+    element: <Login />,
+  },
+  {
+    path: "lent",
+    element: <Login />,
+  },
+];
+
 export const publicRoutes = [
   {
     path: "/login",

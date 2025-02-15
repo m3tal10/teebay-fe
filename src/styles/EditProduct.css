@@ -5,122 +5,123 @@
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   padding: 2rem;
-  font-family: Arial, sans-serif;
 }
 
 .edit-product h2 {
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 2rem;
 }
 
-.form-group {
+.edit-product form {
   display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin-bottom: 1rem;
+  flex-direction: column;
+  gap: 1.5rem;
 }
 
-.form-group label {
-  font-weight: bold;
-  font-size: 1rem;
-  min-width: 120px;
+.edit-product label {
+  display: block;
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 0.5rem;
 }
 
-.form-group input,
-.form-group textarea,
-.form-group select {
-  flex: 1;
-  padding: 0.5rem;
-  border: 1px solid #ccc;
+.edit-product input,
+.edit-product textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ddd;
   border-radius: 4px;
-  font-size: 1rem;
-  transition: border 0.2s ease-in-out;
+  font-size: 14px;
+  color: #333;
+  background: #fff;
+  transition: border-color 0.2s ease;
 }
 
-.form-group textarea {
-  min-height: 80px;
+.edit-product textarea {
+  min-height: 120px;
   resize: vertical;
 }
 
-.form-group input:focus,
-.form-group textarea:focus,
-.form-group select:focus {
-  border-color: #4a4af4;
+.edit-product input:focus,
+.edit-product textarea:focus {
+  border-color: #6366f1;
   outline: none;
 }
 
-/* Categories (React Select) */
+/* React Select Styling */
 .react-select-container {
-  flex: 1;
+  width: 100%;
 }
 
 .react-select__control {
-  border: 1px solid #ccc !important;
+  min-height: 42px !important;
+  border-color: #ddd !important;
   box-shadow: none !important;
-  min-height: 45px !important;
 }
 
-.react-select__control:hover,
+.react-select__control:hover {
+  border-color: #6366f1 !important;
+}
+
 .react-select__control--is-focused {
-  border-color: #4a4af4 !important;
+  border-color: #6366f1 !important;
+  box-shadow: 0 0 0 1px #6366f1 !important;
 }
 
 /* Price and Rent Section */
-.price-rent-container {
-  display: flex;
-  align-items: center;
+.price-rent-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 1rem;
+  margin-bottom: 1rem;
 }
 
-.price-rent-container .form-group {
+.price-input-group,
+.rent-input-group {
   display: flex;
-  align-items: center;
-  flex: 1;
+  flex-direction: column;
 }
 
-.price-rent-container input,
-.price-rent-container select {
-  width: 100px;
+/* Error Messages */
+.error {
+  color: #ef4444;
+  font-size: 12px;
+  margin-top: 0.25rem;
 }
 
 /* Submit Button */
-.btn-submit {
-  display: block;
-  width: 200px;
-  padding: 0.75rem;
-  background: #4a4af4;
+.btn {
+  background: #6366f1;
   color: white;
+  padding: 0.75rem 1.5rem;
   border: none;
   border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
   cursor: pointer;
-  font-size: 1rem;
-  text-align: center;
-  transition: background 0.2s ease-in-out;
+  transition: background-color 0.2s ease;
+  width: fit-content;
+  align-self: flex-end;
 }
 
-.btn-submit:hover {
-  background: #3939d8;
+.btn:hover {
+  background: #4f46e5;
 }
 
-/* Responsive */
+.btn:disabled {
+  background: #a5a6f6;
+  cursor: not-allowed;
+}
+
+/* Responsive Design */
 @media (max-width: 768px) {
   .edit-product {
-    width: 90%;
+    margin: 1rem;
     padding: 1.5rem;
   }
 
-  .form-group {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .price-rent-container {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .price-rent-container input,
-  .price-rent-container select {
-    width: 100%;
+  .price-rent-section {
+    grid-template-columns: 1fr;
   }
 }

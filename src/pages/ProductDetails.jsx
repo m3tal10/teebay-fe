@@ -10,6 +10,7 @@ import { Controller, useForm } from "react-hook-form";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { BUY_PRODUCT, RENT_PRODUCT } from "../graphQl/mutations";
+import { toast } from "react-toastify";
 const modalStyle = {
   position: "absolute",
   top: "50%",
@@ -34,7 +35,6 @@ const ProductDetails = () => {
   const [isBuyModalOpen, setIsBuyModalOpen] = useState(false);
   const [isRentModalOpen, setIsRentModalOpen] = useState(false);
   const startTime = watch("startTime");
-  const endTime = watch("endTime");
   const [rentProduct, { data: rentData, loading: rentLoading }] =
     useMutation(RENT_PRODUCT);
   const [buyProduct, { data: buyData, loading: buyLoading }] =
@@ -59,8 +59,9 @@ const ProductDetails = () => {
           endTime,
         },
       });
+      toast.success("Product rent successfully.");
     } catch (err) {
-      console.warn(err.message);
+      toast.error(err.message);
     }
     setIsBuyModalOpen(false);
     setIsRentModalOpen(false);
@@ -75,8 +76,9 @@ const ProductDetails = () => {
           id: productId,
         },
       });
+      toast.success("Product purchased successfully.");
     } catch (err) {
-      console.warn(err.message);
+      toast.error(err.message);
     }
     setIsBuyModalOpen(false);
     setIsRentModalOpen(false);

@@ -20,7 +20,7 @@ nav {
   font-weight: bold;
 }
 
-.active-link {
+.nav-links .active-link {
   font-weight: bold;
   color: blue;
   border-bottom: 2px solid blue;

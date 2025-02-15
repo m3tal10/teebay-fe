@@ -1,8 +1,9 @@
 import { Route, Routes } from "react-router-dom";
-import { protectedRoutes, publicRoutes } from "./routes";
+import { dashBoardRoutes, protectedRoutes, publicRoutes } from "./routes";
 import Authorization from "./middlewares/Authorization";
 import Layout from "./ui/Layout";
 import Home from "./pages/Home";
+import DashboardLayout from "./ui/DashboardLayout";
 
 function App() {
   return (
@@ -18,6 +19,13 @@ function App() {
               <Route key={index} path={route.path} element={route.element} />
             );
           })}
+          <Route path="/dashboard" element={<DashboardLayout />}>
+            {dashBoardRoutes.map((route, index) => {
+              return (
+                <Route key={index} path={route.path} element={route.element} />
+              );
+            })}
+          </Route>
         </Route>
       </Route>
     </Routes>

@@ -19,7 +19,13 @@ function Home() {
       <div className="products-container">
         {data.products.length ? (
           data.products.map((product) => (
-            <MyProductsCard key={product.id} data={product} />
+            <Link
+              key={product.id}
+              to={`/product/${product.id}`}
+              className="product-link"
+            >
+              <MyProductsCard data={product} home />
+            </Link>
           ))
         ) : (
           <div className="no-products">No Products Available</div>
