@@ -40,7 +40,18 @@ export default function CreateProduct() {
       rentOption: "",
     },
   });
-  const [createProduct, { loading }] = useMutation(CREATE_PRODUCT);
+  const [createProduct, { loading }] = useMutation(CREATE_PRODUCT, {
+    update(cache, { data: { createProduct } }) {
+      cache.modify({
+        fields: {
+          myProducts(existingProducts = []) {
+            // Add new product to cache
+            return [createProduct, ...existingProducts];
+          },
+        },
+      });
+    },
+  });
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -57,7 +68,6 @@ export default function CreateProduct() {
       rentPrice: parseFloat(data.rentPrice),
     };
     try {
-      console.warn({ ...transformedData });
       const response = await createProduct({
         variables: { ...transformedData },
       });
@@ -180,7 +190,7 @@ export default function CreateProduct() {
                   options={RENT_OPTIONS}
                   className="react-select-container"
                   classNamePrefix="react-select"
-                  placeholder="Select categories"
+                  placeholder="Select rent option"
                 />
               )}
             />

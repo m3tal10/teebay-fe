@@ -19,7 +19,22 @@ const modalStyle = {
 
 function MyProductsCard({ data }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [deleteProduct, { loading, error }] = useMutation(DELETE_PRODUCT);
+  const [deleteProduct, { loading, error }] = useMutation(DELETE_PRODUCT, {
+    update(cache, { data: { deleteProduct } }, { variables }) {
+      if (deleteProduct) {
+        cache.modify({
+          fields: {
+            myProducts(existingProducts = [], { readField }) {
+              // removing the deleted product from the cache
+              return existingProducts.filter(
+                (productRef) => readField("id", productRef) !== variables.id
+              );
+            },
+          },
+        });
+      }
+    },
+  });
 
   const date = new Date(Number(data.createdAt));
   const options = { year: "numeric", month: "long", day: "numeric" };
