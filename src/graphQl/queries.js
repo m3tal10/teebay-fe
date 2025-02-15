@@ -36,4 +36,22 @@ const GET_MY_PRODUCTS = gql`
   }
 `;
 
-export { GET_ALL_PRODUCTS, GET_MY_PRODUCTS };
+const GET_PRODUCT = gql`
+  query Product($productId: ID!) {
+    product(id: $productId) {
+      id
+      title
+      categories
+      description
+      buyPrice
+      rentPrice
+      status
+      rentOption
+      viewCount
+      createdAt
+      updatedAt
+    }
+  }
+`;
+
+export { GET_ALL_PRODUCTS, GET_MY_PRODUCTS, GET_PRODUCT };

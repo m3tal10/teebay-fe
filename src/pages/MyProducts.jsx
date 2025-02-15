@@ -1,10 +1,9 @@
 import "../styles/Home.css";
 import { Link } from "react-router-dom"; // Fix import (was `react-router`)
 import { useQuery } from "@apollo/client";
-import { GET_ALL_PRODUCTS, GET_MY_PRODUCTS } from "../graphQl/queries";
+import { GET_MY_PRODUCTS } from "../graphQl/queries";
 import MyProductsCard from "../components/ProductCard";
 import Button from "../components/Button";
-
 function MyProduct() {
   const { loading, error, data } = useQuery(GET_MY_PRODUCTS);
 
@@ -13,12 +12,17 @@ function MyProduct() {
 
   return (
     <div className="my-products">
-      <div className="products-title">All Products</div>
-
+      <div className="products-title">My Products</div>
       <div className="products-container">
         {data.myProducts.length ? (
           data.myProducts.map((product) => (
-            <MyProductsCard key={product.id} data={product} />
+            <Link
+              to={`/edit/${product.id}`}
+              key={product.id}
+              className="product-link"
+            >
+              <MyProductsCard data={product} />
+            </Link>
           ))
         ) : (
           <div className="no-products">No Products Available</div>
@@ -26,7 +30,7 @@ function MyProduct() {
       </div>
 
       <div className="addbutton-section">
-        <Link to="/add-product">
+        <Link to="/add-products">
           <Button
             text="Add Product"
             onClick={() => console.log("Add clicked")}

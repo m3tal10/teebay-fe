@@ -58,4 +58,33 @@ const CREATE_PRODUCT = gql`
   }
 `;
 
-export { SIGN_IN, SIGN_UP, CREATE_PRODUCT };
+const UPDATE_PRODUCT = gql`
+  mutation UpdateProduct(
+    $id: ID!
+    $title: String
+    $categories: [ProductCategory!]
+    $description: String
+    $buyPrice: Float
+    $rentPrice: Float
+    $rentOption: RentOption
+  ) {
+    updateProduct(
+      id: $id
+      title: $title
+      categories: $categories
+      description: $description
+      buyPrice: $buyPrice
+      rentPrice: $rentPrice
+      rentOption: $rentOption
+    ) {
+      id
+      title
+      description
+      buyPrice
+      rentPrice
+      rentOption
+    }
+  }
+`;
+
+export { SIGN_IN, SIGN_UP, CREATE_PRODUCT, UPDATE_PRODUCT };

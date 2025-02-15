@@ -61,6 +61,11 @@ body {
   right: 5vw;
 }
 
+.product-link {
+  color: black;
+  text-decoration: none;
+}
+
 .addproduct-button {
   padding: 16px 22px;
   background-color: rgb(175, 108, 230);
