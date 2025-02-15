@@ -1,0 +1,102 @@
+.borrowed-product-card {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.borrowed-product-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.borrowed-product-title {
+  font-size: 1.25rem;
+  color: #333;
+  margin: 0;
+}
+
+.rental-status {
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.rental-status.active {
+  background-color: #dcfce7;
+  color: #15803d;
+}
+
+.rental-status.expired {
+  background-color: #fee2e2;
+  color: #dc2626;
+}
+
+.borrowed-product-details {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.product-meta {
+  display: flex;
+  justify-content: space-between;
+  color: #666;
+  font-size: 0.875rem;
+}
+
+.rental-period {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  background-color: #f8fafc;
+  padding: 1rem;
+  border-radius: 6px;
+  margin: 0.5rem 0;
+}
+
+.rental-time {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.time-label {
+  font-size: 0.75rem;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.time-value {
+  font-size: 0.875rem;
+  color: #333;
+  font-weight: 500;
+}
+
+.product-description {
+  color: #666;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 640px) {
+  .borrowed-product-card {
+    padding: 1rem;
+  }
+
+  .product-meta {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .rental-period {
+    grid-template-columns: 1fr;
+  }
+}

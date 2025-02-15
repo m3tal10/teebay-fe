@@ -2,13 +2,22 @@ import { NavLink, useNavigate } from "react-router-dom";
 import "../styles/components/Navbar.css";
 import Button from "./Button";
 import { toast } from "react-toastify";
+import { useApolloClient } from "@apollo/client";
 
 function Navbar() {
   const navigate = useNavigate();
-  const handleLogOut = () => {
-    localStorage.removeItem("token");
-    navigate("/login");
-    toast.success("Logged out successfully.");
+  const client = useApolloClient();
+  const handleLogOut = async () => {
+    try {
+      // Clear auth token from localStorage
+      localStorage.removeItem("token");
+      // Clear Apollo cache completely
+      await client.clearStore();
+      // Redirect user to login page
+      navigate("/login");
+    } catch (error) {
+      console.error("Logout failed:", error);
+    }
   };
   return (
     <nav>

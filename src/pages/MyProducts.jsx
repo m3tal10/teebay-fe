@@ -1,5 +1,5 @@
 import "../styles/Home.css";
-import { Link } from "react-router-dom"; // Fix import (was `react-router`)
+import { Link } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { GET_MY_PRODUCTS } from "../graphQl/queries";
 import MyProductsCard from "../components/ProductCard";
@@ -32,11 +32,7 @@ function MyProduct() {
 
       <div className="addbutton-section">
         <Link to="/add-products">
-          <Button
-            text="Add Product"
-            onClick={() => console.log("Add clicked")}
-            type="primary"
-          />
+          <Button text="Add Product" type="primary" />
         </Link>
       </div>
     </div>

@@ -1,12 +1,13 @@
 import { useForm } from "react-hook-form";
 
 import "../styles/SignUp.css";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { SIGN_UP } from "../graphQl/mutations";
 import { useMutation } from "@apollo/client";
 import { toast } from "react-toastify";
 
 const SignUp = () => {
+  const navigation = useNavigate();
   const {
     register,
     handleSubmit,
@@ -32,7 +33,8 @@ const SignUp = () => {
       }
       toast.success("Signed up successfully.");
     } catch (err) {
-      toast.error("Signup failed.");
+      console.log(err);
+      toast.error(err.message);
     }
   };
 

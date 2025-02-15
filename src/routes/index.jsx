@@ -1,9 +1,13 @@
 import CreateProduct from "../pages/AddProduct";
+import BorrowedProducts from "../pages/BorrowedProducts";
+import BoughtProducts from "../pages/BoughtProducts";
 import EditProduct from "../pages/EditProduct";
+import LentProducts from "../pages/LentProducts";
 import Login from "../pages/Login";
 import MyProducts from "../pages/MyProducts";
 import ProductDetails from "../pages/ProductDetails";
 import SignUp from "../pages/Signup";
+import SoldProducts from "../pages/SoldProducts";
 
 export const protectedRoutes = [
   {
@@ -27,19 +31,19 @@ export const protectedRoutes = [
 export const dashBoardRoutes = [
   {
     path: "bought",
-    element: <Login />,
+    element: <BoughtProducts />,
   },
   {
     path: "sold",
-    element: <Login />,
+    element: <SoldProducts />,
   },
   {
     path: "borrowed",
-    element: <Login />,
+    element: <BorrowedProducts />,
   },
   {
     path: "lent",
-    element: <Login />,
+    element: <LentProducts />,
   },
 ];
 

@@ -54,4 +54,94 @@ const GET_PRODUCT = gql`
   }
 `;
 
-export { GET_ALL_PRODUCTS, GET_MY_PRODUCTS, GET_PRODUCT };
+const GET_BOUGHT_PRODUCTS = gql`
+  query Query {
+    boughtProducts {
+      id
+      title
+      categories
+      description
+      buyPrice
+      rentPrice
+      status
+      rentOption
+      viewCount
+      createdAt
+      updatedAt
+    }
+  }
+`;
+
+const GET_SOLD_PRODUCTS = gql`
+  query Query {
+    soldProducts {
+      id
+      title
+      categories
+      description
+      buyPrice
+      rentPrice
+      status
+      rentOption
+      viewCount
+      createdAt
+      updatedAt
+    }
+  }
+`;
+
+const GET_BORROWED_PRODUCTS = gql`
+  query GetBorrowedProducts {
+    borrowedProducts {
+      id
+      product {
+        id
+        title
+        categories
+        description
+        buyPrice
+        rentPrice
+        status
+        rentOption
+        viewCount
+        createdAt
+        updatedAt
+      }
+      startTime
+      endTime
+    }
+  }
+`;
+
+const GET_LENT_PRODUCTS = gql`
+  query GetLentProducts {
+    lentProducts {
+      id
+      product {
+        id
+        title
+        categories
+        description
+        buyPrice
+        rentPrice
+        status
+        rentOption
+        viewCount
+        createdAt
+        updatedAt
+      }
+      startTime
+      endTime
+    }
+  }
+`;
+
+export {
+  GET_LENT_PRODUCTS,
+  GET_BORROWED_PRODUCTS,
+  GET_ALL_PRODUCTS,
+  GET_MY_PRODUCTS,
+  GET_PRODUCT,
+  GET_BOUGHT_PRODUCTS,
+  GET_SOLD_PRODUCTS,
+};
