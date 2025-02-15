@@ -1,8 +1,10 @@
 import { Box, IconButton, Modal, Typography } from "@mui/material";
-import DeleteIcon from "@mui/icons-material/Delete";
 import "../styles/components/ProductCard.css";
+import DeleteIcon from "@mui/icons-material/Delete";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import Button from "./Button";
+import { useMutation } from "@apollo/client";
+import { DELETE_PRODUCT } from "../graphQl/mutations";
 const modalStyle = {
   position: "absolute",
   top: "50%",
@@ -17,6 +19,7 @@ const modalStyle = {
 
 function MyProductsCard({ data }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [deleteProduct, { loading, error }] = useMutation(DELETE_PRODUCT);
 
   const date = new Date(Number(data.createdAt));
   const options = { year: "numeric", month: "long", day: "numeric" };
@@ -30,6 +33,19 @@ function MyProductsCard({ data }) {
     e.preventDefault();
     e.stopPropagation();
     setIsModalOpen(false);
+  };
+
+  const handleDelete = async (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    await deleteProduct({
+      variables: {
+        id: data.id,
+      },
+    });
+
+    setIsModalOpen(false);
+    return;
   };
 
   return (
@@ -67,15 +83,17 @@ function MyProductsCard({ data }) {
         open={isModalOpen}
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
       >
         <Box sx={modalStyle}>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
-            Text in a modal
+          <Typography id="modal-modal-title" variant="h4" component="h2">
+            Are you sure you want to delete this product?
           </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-          </Typography>
+          <Box
+            sx={{ display: "flex", justifyContent: "flex-end", gap: 2, mt: 2 }}
+          >
+            <Button type="danger" text="No" onClick={handleClose} />
+            <Button type="primary" text="Yes" onClick={handleDelete} />
+          </Box>
         </Box>
       </Modal>
     </div>

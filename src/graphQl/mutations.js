@@ -87,4 +87,10 @@ const UPDATE_PRODUCT = gql`
   }
 `;
 
-export { SIGN_IN, SIGN_UP, CREATE_PRODUCT, UPDATE_PRODUCT };
+const DELETE_PRODUCT = gql`
+  mutation DeleteProduct($id: ID!) {
+    deleteProduct(id: $id)
+  }
+`;
+
+export { SIGN_IN, SIGN_UP, CREATE_PRODUCT, UPDATE_PRODUCT, DELETE_PRODUCT };

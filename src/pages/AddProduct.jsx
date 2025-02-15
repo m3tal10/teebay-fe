@@ -35,8 +35,8 @@ export default function CreateProduct() {
       title: "",
       categories: [],
       description: "",
-      buyPrice: 0,
-      rentPrice: 0,
+      buyPrice: "",
+      rentPrice: "",
       rentOption: "",
     },
   });
@@ -207,9 +207,9 @@ export default function CreateProduct() {
             </div>
             <div className="summary-item">
               <span>Price:</span>
-              <p>${formValues.price}</p>,{" "}
+              <p>${formValues.buyPrice}</p>,{" "}
               <span>
-                To rent:${formValues.rentPrice} per{" "}
+                To rent:${Number(formValues.rentPrice)} per{" "}
                 {formValues.rentOption?.value}
               </span>
             </div>
